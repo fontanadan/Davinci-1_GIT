@@ -15,7 +15,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 type			sets;
-interpolationScheme 	cellPointFace;
+interpolationScheme 	cell;
 
 
 setFormat       	raw;
@@ -24,13 +24,13 @@ sets
 (
    profile 
     {
-        type   		uniform;
+        type   		midPoint;
 	axis		y;
-	start           (-0.2 0.07618839437 0.0);
-        end             (-0.2 0.812676207      0.0);
+	start           (-0.2 0.0762 0.0);
+        end             (-0.2 0.8128 0.0);
 	//start		(-0.1  0.09525 0.0);
 	//end		( 0.32 0.09525 0.0);
-	nPoints		250;
+	nPoints		256;
         patches		("my-wall");
 	interpolate 	false;
     }

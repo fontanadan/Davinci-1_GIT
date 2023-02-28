@@ -25,15 +25,15 @@ stopAt          	endTime;
 
 endTime         	1;
 
-deltaT          	0.0000005;
+deltaT          	0.000000005;
 
 writeControl    	adjustableRunTime;
 
-writeInterval   	0.001;
+writeInterval   	1e-5;
 
 purgeWrite      	0;
 
-writeFormat    		ascii;
+writeFormat    		binary;
 
 writePrecision  	6;
 
@@ -47,9 +47,9 @@ runTimeModifiable 	true;
 
 //adjustTimeStep  	no;
 
-maxCo           	0.5;
+maxCo           	1;
 
-maxDeltaT       	1e-06;
+maxDeltaT       	1e-02;
 
 pressArtDiff            true; //activate artificial diffusion on pressure
 convArtDiff             true; //activate artificial diffusion on convective terms
@@ -80,7 +80,7 @@ functions
                 writeControl            writeTime;
                 mode                    staticCoeff;
                 rho                     rhoInf;
-                rhoInf                  0.85;
+                rhoInf                  0.8955;
                 U                       UInf;
                 UInf                    (291. 0 0);
                 pInf                    67978.;
@@ -93,7 +93,7 @@ functions
                 libs                    ( forces );
                 writeControl            writeTime;
                 rho                     rhoInf;
-                rhoInf                  0.85;
+                rhoInf                  0.8955;
                 liftDir                 (0 1 0);
                 dragDir                 (1 0 0);
                 CofR                    (0.5 0 0);
@@ -109,7 +109,21 @@ functions
                 type                    wallShearStress;
                 libs                    ( fieldFunctionObjects );
                 writeControl            writeTime;
+		interpolationScheme	cellPointFace;
                 patches                 (my-wall);
+		setFormat		raw;
+	        sets
+                (
+                        profile
+                        {
+                                type            uniform;
+                                axis            y;
+                                start           (-0.2 0.0762  0.0);
+                                end             (-0.2 0.8128  0.0);
+                                nPoints         512;
+                                interpolate     true;
+                        }
+                );
         }
 
         yPlus
@@ -117,16 +131,31 @@ functions
                 type                    yPlus;
                 libs                    ( fieldFunctionObjects );
                 writeControl            writeTime;
+		interpolationscheme	cellPointFace;
                 patches                 (my-wall);
+		setFormat		raw;
+		sets
+                (
+                        profile
+                        {
+                                type            uniform;
+                                axis            y;
+                                start           (-0.2 0.0762  0.0);
+                                end             (-0.2 0.8128  0.0);
+                                nPoints         512;
+                                interpolate     true;
+                        }
+                );
+
         }
 
-	SampleU
+	SampleDict
         {
                 type                    sets;
                 libs                    (sampling);
                 writeControl            outputTime;
                 writeInterval           1;
-                interpolationScheme     cell;
+                interpolationScheme     cellPointFace;
                 setFormat               raw;
                 sets
                 (
@@ -134,14 +163,15 @@ functions
                         {
                                 type            uniform;
                                 axis            y;
-                                start           (-0.2 0.0761884 0.0);
-                                end             (-0.2 0.812676  0.0);
-                                nPoints         400;
+                                start           (-0.2 0.0762 0.0);
+                                end             (-0.2 0.8128  0.0);
+                                nPoints         4096;
                                 interpolate     true;
                         }
                 );
-                fields          (U grad(U) rho T);
-                }
+
+                fields          (U grad(U) rho p T thermo:mu) ;
+        }
 
 	Cp
         {
