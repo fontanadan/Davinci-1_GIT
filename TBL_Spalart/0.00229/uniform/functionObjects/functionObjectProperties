@@ -1,0 +1,73 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2006                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "0.00229/uniform/functionObjects";
+    object      functionObjectProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+results
+{
+    forceCoeffs
+    {
+        scalar
+        {
+            Cd              4.699000700254521e-06;
+            Cs              -2.890331889647082e-18;
+            Cl              -0.005298419520573389;
+            CmRoll          2.209202672394706e-19;
+            CmPitch         0.002492264802783477;
+            CmYaw           -2.625047907986188e-18;
+            Cd(f)           2.349500350127482e-06;
+            Cd(r)           2.34950035012704e-06;
+            Cs(f)           -4.070213852809729e-18;
+            Cs(r)           1.179881963162647e-18;
+            Cl(f)           -0.0001569449575032182;
+            Cl(r)           -0.005141474563070171;
+        }
+    }
+}
+
+SampleDict
+{
+    T
+    {
+        file            "<case>/postProcessing/SampleDict/0.00229/x02neg_T_p_rho_thermo:mu.xy";
+    }
+    p
+    {
+        file            "<case>/postProcessing/SampleDict/0.00229/x02neg_T_p_rho_thermo:mu.xy";
+    }
+    rho
+    {
+        file            "<case>/postProcessing/SampleDict/0.00229/x02neg_T_p_rho_thermo:mu.xy";
+    }
+    thermo:mu
+    {
+        file            "<case>/postProcessing/SampleDict/0.00229/x02neg_T_p_rho_thermo:mu.xy";
+    }
+    U
+    {
+        file            "<case>/postProcessing/SampleDict/0.00229/x02neg_U.xy";
+    }
+}
+
+Cp
+{
+    p
+    {
+        file            "<case>/postProcessing/Cp/0.00229/profile_p.xy";
+    }
+}
+
+
+// ************************************************************************* //
