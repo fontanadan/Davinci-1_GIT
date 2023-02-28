@@ -16,7 +16,7 @@ FoamFile
 
 dimensions      [0 2 -1 0 0 0 0];
 
-internalField   uniform  0.0000865; //0.000058315;
+internalField   uniform 1.082989010989011e-04;
 
 boundaryField
 {
@@ -33,7 +33,8 @@ boundaryField
 
     my-wall
     {
-        type            zeroGradient;
+        type            fixedValue;			//zeroGradient;
+    	value		uniform 1e-18;
     }
 
     "(wedgeplanesFront|wedgeplanesBack)"

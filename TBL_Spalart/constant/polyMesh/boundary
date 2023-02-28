@@ -8,8 +8,9 @@
 FoamFile
 {
     version     2.0;
-    format      ascii;
+    format      binary;
     class       polyBoundaryMesh;
+    arch        "LSB;label=32;scalar=64";
     location    "constant/polyMesh";
     object      boundary;
 }
@@ -20,42 +21,42 @@ FoamFile
     my-velocity-inlet
     {
         type            patch;
-        nFaces          73;
-        startFace       101427;
+        nFaces          256;
+        startFace       1904752;
     }
     my-pressure-outlet
     {
         type            patch;
-        nFaces          73;
-        startFace       101500;
+        nFaces          256;
+        startFace       1905008;
     }
     my-wall
     {
         type            wall;
         inGroups        1(wall);
-        nFaces          700;
-        startFace       101573;
+        nFaces          3728;
+        startFace       1905264;
     }
     wedgeplanesBack
     {
         type            wedge;
         inGroups        1(wedge);
-        nFaces          51100;
-        startFace       102273;
+        nFaces          954368;
+        startFace       1908992;
     }
     wedgeplanesFront
     {
         type            wedge;
         inGroups        1(wedge);
-        nFaces          51100;
-        startFace       153373;
+        nFaces          954368;
+        startFace       2863360;
     }
     freeSurf
     {
         type            symmetryPlane;
         inGroups        1(symmetryPlane);
-        nFaces          700;
-        startFace       204473;
+        nFaces          3728;
+        startFace       3817728;
     }
 )
 

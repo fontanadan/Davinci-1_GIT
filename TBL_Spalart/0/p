@@ -16,7 +16,7 @@ FoamFile
 
 dimensions      [1 -1 -2 0 0 0 0];
 
-internalField   uniform  70860.;
+internalField   uniform  7.087670161442639e+04;
 
 boundaryField
 {
@@ -31,8 +31,8 @@ boundaryField
     my-pressure-outlet
     {
         type            fixedMean;
-        meanValue       uniform 67978.;
-        value           uniform 67978.;
+        meanValue       uniform 67977.75;
+        value           uniform 67977.75;
     }
     
     my-wall
